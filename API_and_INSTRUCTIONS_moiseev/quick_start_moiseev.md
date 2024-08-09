@@ -157,30 +157,57 @@ https://docs.dfir-iris.org/operations/api/
 "name": "Authorization",
 "value": "Bearer NLQ3rN6JwdguxjHPWHtYIzo0difV8_IYFLV6hgOzoOSntyo25904Z0HgdS8keIk4uJ3Dc3cltwPH_76cPZZ3Og"
 
-тело запроса 
+тело запроса  в узле HTTP Request
 {
   "cid": 2,
   "task_assignees_id": [1],
   "task_description": "это описание",
   "task_status_id": 1,
   "task_tags": "это тэг",
-  "task_title":  "это тайтл",
+  "task_title": "{{ $json.title }}",
+  "task_description": "{{ $json.text }}",
   "custom_attributes": {}
 }
 
-!!!---ВМЕСТО ПОЧТЫ ПОКА ЧТО СДЕЛАТЬ КУДА ТО ЕЩЕ. НЕ ЛОГИНИТСЯ.
+---------------
+в узле с GMAIL
 SMTP account
-peter91peter91peter91@gmail.com
-smtp.gmail.com
+    peter91peter91peter91@gmail.com
+    smtp.gmail.com
 !!! gmail Пароль приложения создан Пароль приложения для вашего устройства
-czhf sftt bubo evnc
+      czhf sftt bubo evnc
+в узле с GMAIL пишем такую HTML
+      <p>The wazuh event! A new task has been received,</p><p>title: {{ $json.data.task_title }}</p><p>text: {{ $json.data.task_description }}</p>
+---------------
 
+в узле вставляем только ТЕЛО  example wazuh
+---------------
+{
+  "severity": 2,
+  "pretext": "WAZUH Alert",
+  "title": "Добавлен пользователь",
+  "text": "Aug 7 19:07:09 ca-iris useradd[2711078]: new user: name=adaykinav49, UID=1048, GID=1048, home=/home/adaykinav49, shell=/bin/bash, from=/dev/pts/1",
+  "rule_id": "200202",
+  "timestamp": "2024-08-07T19:07:10.070+0000",
+  "id": "1723057630.49963649",
+  "all_fields": {
+    "timestamp": "2024-08-07T19:07:10.070+0000",
+    "rule": {
+      "level": 6,
+      "description": "Добавлен пользователь",
+      "id": "200202",
+      "info": "user added",
+      "firedtimes": 4,
+      "mail": false,
+      "groups": ["infra"]
+    },
+    "agent": {
+      "id": "001",
+      "name": "ca-iris",
+      "ip": "10.0.10.87"
+---------------
 
-описание... {{ $json.data.task_description }} 
-сообщение... {{ $json.message }}
-task_uuid далее... {{ $json.data.task_uuid }}
-
-удаляем
+удаляем   ПОДЫ ресурсы кубер
     helm uninstall postgresql -n moiseev-namespace-iris;
     helm uninstall iris -n moiseev-namespace-iris;
     helm uninstall n8n -n moiseev-namespace-iris;    
@@ -300,12 +327,18 @@ json
 -----------------------------
 -----------------------------
 -----------------------------
-что сделано
-
+У меня была задача проработка замены shuffle    
+что сделал:
 1) рассмотрел аналоги компоненты для замены shuffle, подобран инструмент n8n 
-2) протестирована работа n8n в связке с iris 
+2) протестировал работу n8n в связке с iris 
+-составил схему передачи данных из события с узлами wazuh(статические данные из примера)-n8n-iris-gmail
 -в n8n данные-JSON с примером из "события Wazuh" записываю в статический узел формирования http-request
 -там выбираю нужные поля, формирую HTTP-запрос по IRIS API для создания задачи
--далее необходимые поля передаю в узел формирования отбивки-письма на почту(задача пересылается в тестовую почту peter91peter91peter91@gmail.com
-
+-далее необходимые поля передаю в узел формирования отбивки-письма на почту(задача пересылается в тестовую почту peter91peter91peter91@gmail.com)
 3) в iris поступает  POST http-request и создается TASK. (доступ к iris планируется через аутентификацию через коннекторы в СКДПП)
+4) Далее можно поднимать и тестировать всё в аллауда-А
+
+ZAMMAD требует  rwx для своей работы
+
+с командой - с ограниченными ресурсами поднять n8n (ест мало)
+ДАЛЕЕ  по n8n мне надо подготовить чарты и на аллауда-А поднять, протестировать
