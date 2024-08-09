@@ -1,0 +1,68 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "headerAuth",
+        "url": "http://iriswebapp-app:8000/case/tasks/add",
+        "method": "POST",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer NLQ3rN6JwdguxjHPWHtYIzo0difV8_IYFLV6hgOzoOSntyo25904Z0HgdS8keIk4uJ3Dc3cltwPH_76cPZZ3Og"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameter": [
+            {
+              "name": "task_assignees_id",
+              "value": "[1]",
+              "type": "json"
+            },
+            {
+              "name": "task_description",
+              "value": "",
+              "type": "json"
+            },
+            {
+              "name": "task_status_id",
+              "value": "1",
+              "type": "json"
+            },
+            {
+              "name": "task_tags",
+              "value": "",
+              "type": "json"
+            },
+            {
+              "name": "task_title",
+              "value": "dummy title",
+              "type": "json"
+            },
+            {
+              "name": "custom_attributes",
+              "value": "{}",
+              "type": "json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Create Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        280
+      ],
+      "id": "5b163b68-0ad4-4339-8676-122cafa03a70"
+    }
+  ],
+  "connections": {},
+  "pinData": {}
+}

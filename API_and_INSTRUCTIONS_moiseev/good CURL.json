@@ -1,0 +1,11 @@
+curl -X POST http://iriswebapp-app:8000/case/tasks/add \
+-H "Authorization: Bearer NLQ3rN6JwdguxjHPWHtYIzo0difV8_IYFLV6hgOzoOSntyo25904Z0HgdS8keIk4uJ3Dc3cltwPH_76cPZZ3Og" \
+-H "Content-Type: application/json" \
+-d '{
+  "task_assignees_id": [1],
+  "task_description": "",
+  "task_status_id": 1,
+  "task_tags": "",
+  "task_title": "dummy title",
+  "custom_attributes": {}
+}'

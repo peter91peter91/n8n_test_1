@@ -1,0 +1,12 @@
+{
+  "cid": 2,
+  "task_assignees_id": [
+    1
+  ],
+  "task_description": "это описание",
+  "task_status_id": 1,
+  "task_tags": "это тэг",
+  "task_title": "Добавлен пользователь",
+  "text": "Aug  7 19:07:09 ca-iris useradd[2711078]: new user: name=adaykinav49, UID=1048, GID=1048, home=/home/adaykinav49, shell=/bin/bash, from=/dev/pts/1",
+  "custom_attributes": {}
+}

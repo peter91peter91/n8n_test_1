@@ -1,0 +1,79 @@
+  [
+      {
+        "headers": {
+          "host": "ca-n8n.domrf.ru",
+          "x-request-id": "3398aeefcaef63513e04c133ca0c719a",
+          "x-real-ip": "10.0.10.12",
+          "x-forwarded-for": "10.0.10.12",
+          "x-forwarded-host": "ca-n8n.domrf.ru",
+          "x-forwarded-port": "443",
+          "x-forwarded-proto": "https",
+          "x-forwarded-scheme": "https",
+          "x-scheme": "https",
+          "content-length": "1407",
+          "user-agent": "python-requests/2.25.1",
+          "accept-encoding": "gzip, deflate",
+          "accept": "*/*",
+          "content-type": "application/json",
+          "accept-charset": "UTF-8"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "severity": 2,
+          "pretext": "WAZUH Alert",
+          "title": "Добавлен пользователь",
+          "text": "Aug  7 19:07:09 ca-iris useradd[2711078]: new user: name=adaykinav49, UID=1048, GID=1048, home=/home/adaykinav49, shell=/bin/bash, from=/dev/pts/1",
+          "rule_id": "200202",
+          "timestamp": "2024-08-07T19:07:10.070+0000",
+          "id": "1723057630.49963649",
+          "all_fields": {
+            "timestamp": "2024-08-07T19:07:10.070+0000",
+            "rule": {
+              "level": 6,
+              "description": "Добавлен пользователь",
+              "id": "200202",
+              "info": "user added",
+              "firedtimes": 4,
+              "mail": false,
+              "groups": [
+                "infra"
+              ]
+            },
+            "agent": {
+              "id": "001",
+              "name": "ca-iris",
+              "ip": "10.0.10.87"
+            },
+            "manager": {
+              "name": "wazuh-manager-master-0"
+            },
+            "id": "1723057630.49963649",
+            "cluster": {
+              "name": "wazuh",
+              "node": "wazuh-manager-master"
+            },
+            "full_log": "Aug  7 19:07:09 ca-iris useradd[2711078]: new user: name=adaykinav49, UID=1048, GID=1048, home=/home/adaykinav49, shell=/bin/bash, from=/dev/pts/1",
+            "predecoder": {
+              "program_name": "useradd",
+              "timestamp": "Aug  7 19:07:09",
+              "hostname": "ca-iris"
+            },
+            "decoder": {
+              "parent": "useradd",
+              "name": "useradd"
+            },
+            "data": {
+              "dstuser": "adaykinav49",
+              "uid": "1048",
+              "gid": "1048",
+              "home": "/home/adaykinav49",
+              "shell": "/bin/bash,"
+            },
+            "location": "/var/log/auth.log"
+          }
+        },
+        "webhookUrl": "http://localhost:5678/webhook-test/33a4d134-a5c6-4fe6-b8de-ddc9f1bd8a36",
+        "executionMode": "test"
+      }
+  ]
